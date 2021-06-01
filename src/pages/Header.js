@@ -109,6 +109,7 @@ export default function Header() {
                 open={open}
                 onClose={handleClose}
               >
+                <MenuItem onClick={handleChange}></MenuItem>
                 <MenuItem onClick={() => { history.push("/profile") }}>Profile</MenuItem>
                 <MenuItem onClick={Logout}>Logout</MenuItem>
               </Menu>
