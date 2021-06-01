@@ -42,14 +42,12 @@ export default function Header() {
     
 
     var user = firebase.auth().currentUser;
-    var email, name, photoUrl;
+    var photoUrl;
     const classes = useStyles();
 
 
     if (user != null) {
 
-        email = user.email;
-        name = user.name;
         photoUrl = user.photoURL;
         
 
@@ -67,6 +65,7 @@ export default function Header() {
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
+    
   };
 
   const handleClose = () => {

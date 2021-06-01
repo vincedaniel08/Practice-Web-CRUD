@@ -268,7 +268,7 @@ export default function NewUser() {
 
     return (
         <div >
-
+                
             <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
                 {steps.map((label) => (
                     <Step key={label}>

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Mail, Facebook, GitHub } from '@material-ui/icons';
 import Box from '@material-ui/core/Box';
-import Modal from '@material-ui/core/Modal';
 import firebase from "../utils/firebase";
 import ModalMenu from './ModalMenu'
 import {
@@ -101,12 +100,12 @@ export default function Login() {
             .signInWithPopup(provider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
+              
 
                 // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = credential.accessToken;
+               
                 // The signed-in user info.
-                var user = result.user;
+           
                
                
                 // ...
@@ -132,13 +131,13 @@ export default function Login() {
             .signInWithPopup(provider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
+               
 
                 // The signed-in user info.
-                var user = result.user;
+               
 
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                var accessToken = credential.accessToken;
+              
                 <ModalMenu/>
                 // ...
             })
@@ -164,13 +163,13 @@ export default function Login() {
             .signInWithPopup(provider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
+               
 
                 // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-                var token = credential.accessToken;
+                
 
                 // The signed-in user info.
-                var user = result.user;
+               
                 <ModalMenu/>
 
                 // ...

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import NewUser from "./pages/NewUser";
 import ForgotPassword from "./pages/ForgotPassword";
 import Registration from "./pages/Registration";
 import NotFound from "./pages/404";
@@ -61,7 +60,7 @@ function App() {
         <PrivateRoute component={Profile} isAuth={state.isAuth} path="/profile" exact/>
         <PublicRoute component={Login} isAuth={state.isAuth} restricted={true} path="/login" exact />
         <PublicRoute component={Registration} isAuth={state.isAuth} restricted={true} path="/registration" exact />
-        <PublicRoute component={NewUser} isAuth={state.isAuth} restricted={true} path="/newuser" exact />
+       
         <Route component={ForgotPassword} path="/forgotpassword" exact />
         <Route component={NotFound} />
 

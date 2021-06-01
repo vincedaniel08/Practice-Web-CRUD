@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from "../utils/firebase";
 import { Avatar, Modal, makeStyles, Backdrop, Fade } from '@material-ui/core';
 import Header from "./Header";
-import { useHistory } from "react-router-dom";
+
 
 
 import {
@@ -62,9 +62,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'space-between',
         display: 'flex',
-        justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column",
+      
     },
 
     parentbox: {
@@ -166,7 +165,7 @@ export default function Profile() {
 
         else {
 
-            var user = firebase.auth().currentUser;
+      
             var newPassword = payload.password;
 
             user.updatePassword(newPassword).then(function () {

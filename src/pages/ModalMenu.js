@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
@@ -65,16 +65,13 @@ export default function ModalMenu() {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
+   
     const handleClose = () => {
         setOpen(false);
     };
     const classes = useStyles();
  
-    const [loading, setLoading] = useState(false);
+
     return (
        
 

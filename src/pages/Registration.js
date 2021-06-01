@@ -89,13 +89,7 @@ export default function Registration() {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
-
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
+               
                 history.push("/home");
                 // ...
             }).catch((error) => {
@@ -120,13 +114,13 @@ export default function Registration() {
             .signInWithPopup(provider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
+               
 
                 // The signed-in user info.
-                var user = result.user;
+               
 
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                var accessToken = credential.accessToken;
+               
                 history.push("/home");
                 // ...
             })
@@ -152,13 +146,12 @@ export default function Registration() {
             .signInWithPopup(provider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
-
+                
                 // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-                var token = credential.accessToken;
+               
 
                 // The signed-in user info.
-                var user = result.user;
+             
                 history.push("/home");
 
                 // ...
