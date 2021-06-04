@@ -29,11 +29,10 @@ export default function Header() {
     const history = useHistory();
 
     const Logout = () => {
-
+    
         firebase.auth().signOut().then(() => {
           // Sign-out successful.
-          
-          history.push("/login")
+        
       
         }).catch((error) => {
           // An error happened.
