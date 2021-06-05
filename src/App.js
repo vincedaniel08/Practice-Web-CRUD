@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import Registration from "./pages/Registration";
+import Payment from "./pages/Payment";
 import NotFound from "./pages/404";
 import PrivateRoute from "../src/routers/PrivateRoute";
 import PublicRoute from "../src/routers/PublicRoute";
@@ -58,9 +59,9 @@ function App() {
         </Route>
         <PrivateRoute component={Home} isAuth={state.isAuth} path="/home" exact />
         <PrivateRoute component={Profile} isAuth={state.isAuth} path="/profile" exact/>
+        <PrivateRoute component={Payment} isAuth={state.isAuth} path="/payment" exact />
         <PublicRoute component={Login} isAuth={state.isAuth} restricted={true} path="/login" exact />
         <PublicRoute component={Registration} isAuth={state.isAuth} restricted={true} path="/registration" exact />
-       
         <Route component={ForgotPassword} path="/forgotpassword" exact />
         <Route component={NotFound} />
 

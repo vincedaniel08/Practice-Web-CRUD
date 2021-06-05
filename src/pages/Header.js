@@ -11,6 +11,21 @@ import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import { useHistory } from "react-router-dom";
 
+
+import clsx from 'clsx';
+
+import Drawer from '@material-ui/core/Drawer';
+
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import Payment from '@material-ui/icons/Payment';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 2,
@@ -22,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
   },
 }));
 
@@ -39,6 +60,11 @@ export default function Header() {
         });
     }    
     
+    const [state, setState] = React.useState({
+
+      left: false,
+    
+    });
 
     var user = firebase.auth().currentUser;
     var photoUrl;
@@ -71,19 +97,64 @@ export default function Header() {
     setAnchorEl(null);
   };
 
+  //Drawer 
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {['Payment', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon onClick={() => { history.push("/payment") }}>{index % 2 === 0 ? <Payment /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
   return (
     <div className={classes.root}>
       
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+        {[""].map((anchor) => (
+        <React.Fragment  key={anchor}>
+          <IconButton className={classes.menuButton}  aria-label="menu"  color="inherit" onClick={toggleDrawer(anchor, true)}><MenuIcon />{anchor}</IconButton>
+          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+         
           <Typography variant="h6" className={classes.title} onClick={() => { history.push("/home") }}>
             Reverb
           </Typography>
           {auth && (
             <div>
+              
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -93,6 +164,7 @@ export default function Header() {
               >
                 <Avatar src={photoUrl} />
               </IconButton>
+             
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
