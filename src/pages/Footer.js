@@ -11,10 +11,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         
         width: '100%',
-        height: 50,
+        height: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'absolute', //Here is the trick
+        position: 'relative', //Here is the trick
         bottom: 0,
         
     },

@@ -58,6 +58,7 @@ export default function CashInModal({ open, setOpen, userUid }) {
 
                 batch.commit().then(() => {
                     handleClose();
+                    setState({ amount: 0});
                 }).catch(err=>{
                     //error
                 });
