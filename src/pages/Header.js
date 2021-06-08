@@ -37,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    cursor: "pointer",
+    
   },
   list: {
     width: 250,
@@ -116,9 +118,9 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Payment', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon onClick={() => { history.push("/payment") }}>{index % 2 === 0 ? <Payment /> : <MailIcon />}</ListItemIcon>
+        {['Payment'].map((text) => (
+          <ListItem button key={text} onClick={() => { history.push("/payment") }}>
+            <ListItemIcon > <Payment /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -149,7 +151,7 @@ export default function Header() {
         </React.Fragment>
       ))}
          
-          <Typography variant="h6" className={classes.title} onClick={() => { history.push("/home") }}>
+          <Typography variant="h6"  className={classes.title}   onClick={() => { history.push("/home") }}>
             Reverb
           </Typography>
           {auth && (

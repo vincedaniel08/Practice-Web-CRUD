@@ -46,7 +46,7 @@ export default function CashInModal({ open, setOpen, userUid }) {
             batch.set(historyRef, {
                 type: "cash-in",
                 amount: state.amount,
-                created_at: new Date(),
+                created_at: new Date().getTime(),
             });
        
          

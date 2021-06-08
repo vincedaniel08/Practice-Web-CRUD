@@ -46,7 +46,7 @@ export default function CashOutModal({ open, setOpen, userUid }) {
             batch.set(historyRef, {
                 type: "cash-out",
                 amount: state.amount,
-                created_at: new Date(),
+                created_at: new Date().getTime(),
             });
        
          

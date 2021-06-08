@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react';
 import firebase from "../utils/firebase";
 import { makeStyles, Grid, Button, Card, CardContent, Typography } from "@material-ui/core";
 import Header from "./Header";
-import Footer from "./Footer";
 import CashInModal from "../modal/CashInModal";
 import CashOutModal from "../modal/CashOutModal";
-import {DataGrid} from "@material-ui/data-grid";
+
+import {
+  DataGrid,
+  GridToolbarContainer,
+  GridToolbarExport,
+} from '@material-ui/data-grid';
+
 import "../App.css";
+
+import dayjs from "dayjs";
+import localizeFormat from "dayjs/plugin/localizedFormat";
+dayjs.extend(localizeFormat);
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,7 +33,7 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
     },
     historyContainer:{
-        maxWidth: 370,
+        width: 400,
         marginBottom: 20,
         display: 'flex', 
         alignItems: "center",
@@ -56,18 +65,21 @@ export default function Payment() {
         {
             field: "amount",
             headerName: "Amount",
-            width: 130,
+            width: 126,
         },
         {
             field: "type",
             headerName: "Transaction Type",
-            width: 130,
+            width: 115,
         },
         {
             field: "created_at",
             headerName: "Date",
-            width: 130,
-        }
+            width: 145,
+            renderCell: (params) => (
+            <Typography>{dayjs(params.value).format("LLL")}</Typography>
+            ),
+        },
     ];
 
     useEffect(() => {
@@ -113,10 +125,18 @@ export default function Payment() {
         fetchData();
     }, [])
 
+    function CustomToolbar() {
+        return (
+          <GridToolbarContainer>
+            <GridToolbarExport />
+          </GridToolbarContainer>
+        );
+      }
+
     return (
         <div>
         <Header />
-   
+     
         <div className="mydiv" >
 
            
@@ -164,7 +184,15 @@ export default function Payment() {
                     ))} 
                   */}
 
-                  <DataGrid columns={columns} rows={transaction} pageSize={10} autoHeight />
+                  <DataGrid 
+                  columns={columns} 
+                  rows={transaction} 
+                  pageSize={10} 
+                  autoHeight
+                  components={{ Toolbar: CustomToolbar }}
+                  disableSelectionOnClick
+                  disableMultipleSelection
+                  />
 
 
                 </Grid>
@@ -173,11 +201,11 @@ export default function Payment() {
             <CashInModal open={cashInOpen} setOpen={setCashInOpen} userUid={state.userUid} />
             <CashOutModal open={cashOutOpen} setOpen={setCashOutOpen} userUid={state.userUid} />
 
-
+        
             </div>
-            <Footer />
-      
-
+         
+         
+           
         </div>
 
     )

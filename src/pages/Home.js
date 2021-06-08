@@ -14,9 +14,11 @@ export default function Home() {
         <div>
 
             <Header />
-
-
-            <Footer />
+                <h1>Home
+              
+                </h1>
+                <Footer />
+          
         </div>
 
     )

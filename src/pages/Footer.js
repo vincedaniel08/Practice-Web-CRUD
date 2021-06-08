@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         
         width: '100%',
-        height: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'relative', //Here is the trick
+        position: 'absolute', //Here is the trick
         bottom: 0,
-        
+      
+
     },
    
   }));
@@ -100,3 +100,6 @@ export default function Footer() {
        </footer>
     )
 }
+
+
+
