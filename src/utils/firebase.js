@@ -1,14 +1,13 @@
 import firebase from "firebase";
 
-var firebaseConfig = {
-    apiKey: "AIzaSyBVx3ayV0R-cPymzrB5CGC5O_KUNy7Kbtg",
-    authDomain: "practice-crud-42dca.firebaseapp.com",
-    projectId: "practice-crud-42dca",
-    storageBucket: "practice-crud-42dca.appspot.com",
-    messagingSenderId: "306544576012",
-    appId: "1:306544576012:web:14a4125caa2949c7ded029",
-    measurementId: "G-JJTSCYE9R7"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCtRo8nt09xHbsU0i4oWj6F89scPFBRmbE",
+  authDomain: "ecommerce-store-6f2ed.firebaseapp.com",
+  projectId: "ecommerce-store-6f2ed",
+  storageBucket: "ecommerce-store-6f2ed.appspot.com",
+  messagingSenderId: "883067791554",
+  appId: "1:883067791554:web:ab632e80939a65b9e1335b"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
  
