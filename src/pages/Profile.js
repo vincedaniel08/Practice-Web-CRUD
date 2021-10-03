@@ -263,7 +263,7 @@ export default function Profile() {
                                                     </IconButton>
                                                 </InputAdornment>
                                             }
-                                            labelWidth={70}
+                                            labelWidth={135}
                                         />
                                     </FormControl>
                                     <Button className={classes.field1} variant="contained" color="primary" onClick={botSave} >Save</Button>

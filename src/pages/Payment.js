@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.primary.main,
     },
     button:{
-        margin: theme.spacing(1),
+        margin: theme.spacing(.5),
     },
     historyContainer:{
         width: 400,
@@ -165,7 +165,6 @@ export default function Payment() {
                     color="secondary" 
                     className={classes.button}
                     onClick={() => setCashInOpen(true)}> Cash-in
-                    
                       </Button>
                 </Grid>
                 <Grid item>
